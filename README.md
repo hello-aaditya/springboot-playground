@@ -32,7 +32,7 @@ This repository contains hands-on projects built while learning:
 
 | Project | Description | Status |
 |---------|-------------|--------|
-| User Management App | CRUD REST API using Spring Boot + JPA + MariaDB | Completed |
+| [User Management App](./user-management-app) | CRUD REST API using Spring Boot + JPA + MariaDB | Completed |
 | More Projects Coming Soon | Learning in Progress | 🚧 |
 
 ---

@@ -187,7 +187,7 @@ spring.jpa.show-sql=true
 ## 1. Clone Repository
 
 ```bash
-git clone https://github.com/hello-aaditya/user-management-app.git
+git clone https://github.com/hello-aaditya/springboot-playground.git
 ```
 
 ---
@@ -195,7 +195,7 @@ git clone https://github.com/hello-aaditya/user-management-app.git
 ## 2. Navigate to Project Directory
 
 ```bash
-cd user-management-app
+cd springboot-playground/user-management-app
 ```
 
 ---
