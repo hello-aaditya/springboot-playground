@@ -6,6 +6,10 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="users")
@@ -16,12 +20,17 @@ public class User {
 	private Long id;
 	
 	@Column(name="firstName")
+	@NotNull
+	@Size(min=2,message="First Name must have atleast 2 characters")
 	private String firstName;
 	
 	@Column(name="lastName")
+	@Size(min=2, message="Last Name must have atleast 2 characters")
 	private String lastName;
 	
 	@Column(name="email")
+	@Email
+	@NotBlank
 	private String email;
 	
 	public User() {
