@@ -14,6 +14,8 @@ import com.mydomain.springweb.userrestapi.entity.User;
 import com.mydomain.springweb.userrestapi.exception.ResourceNotFoundException;
 import com.mydomain.springweb.userrestapi.repository.UserRepository;
 
+import jakarta.validation.Valid;
+
 @RestController
 public class UserController {
 	
@@ -28,7 +30,7 @@ public class UserController {
 	
 	// C: CREATE USERS
 	@PostMapping("/add-user")
-	public User addUser(@RequestBody User user) {
+	public User addUser(@Valid @RequestBody User user) {
 		return userRepository.save(user);
 	}
 	
@@ -47,7 +49,7 @@ public class UserController {
 	
 	// U: UPDATE USER BY ID
 	@PutMapping("/user/{userId}")
-	public User updateUser(@RequestBody User user, @PathVariable Long userId) {
+	public User updateUser(@Valid @RequestBody User user, @PathVariable Long userId) {
 		User existedUser = userRepository.findById(userId)
 		.orElseThrow(() -> new ResourceNotFoundException("User Not Found with ID: " + userId));
 		
