@@ -7,4 +7,5 @@ import com.mydomain.springweb.employeehub.entity.Employee;
 
 public interface EmployeeService {
 	List<Employee> getAllEmployees();
+	void saveEmployee(Employee employee);
 }

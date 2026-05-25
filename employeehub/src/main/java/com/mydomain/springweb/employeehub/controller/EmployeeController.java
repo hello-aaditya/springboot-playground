@@ -2,9 +2,15 @@ package com.mydomain.springweb.employeehub.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
+import com.mydomain.springweb.employeehub.entity.Employee;
 import com.mydomain.springweb.employeehub.service.EmployeeService;
+
+import jakarta.validation.Valid;
 
 @Controller
 public class EmployeeController {
@@ -21,5 +27,26 @@ public class EmployeeController {
 		
 		model.addAttribute("listEmployee", employeeService.getAllEmployees());
 		return "index";
+	}
+	
+	// CREATE MODEL ATTRIBUTE TO BIND FORM DATA 
+	@GetMapping("/showNewEmployeeForm")
+	public String showNewEmployeeForm(Model model) {
+
+		Employee employee = new Employee();
+		model.addAttribute("employee", employee);
+		return "new_employee";
+	}
+	
+	// SAVE EMPLOYEE TO DB
+	@PostMapping("/saveEmployee")
+	public String saveEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult bindingResult) {
+		
+		if (bindingResult.hasErrors()) {
+			return "new_employee";
+		}
+		
+		employeeService.saveEmployee(employee);
+		return "redirect:/";
 	}
 }
