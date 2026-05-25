@@ -16,9 +16,8 @@ bin/
 # Maven Wrapper
 # ==========================================
 
-# Ignore wrapper JAR only if you don't want to share it.
-# Usually teams COMMIT this file.
-# Uncomment below line only if needed.
+# Usually this file SHOULD be committed.
+# Uncomment only if you intentionally want to ignore it.
 
 # .mvn/wrapper/maven-wrapper.jar
 
@@ -29,22 +28,35 @@ bin/
 logs/
 *.log
 
+# JVM crash logs
+hs_err_pid*
+replay_pid*
+
 # ==========================================
 # Environment / Secrets
 # ==========================================
 
+# Environment files
 **/.env
+.env.*
 application-secret.properties
 
 # ==========================================
 # STS / Eclipse
 # ==========================================
 
+# Eclipse workspace metadata
+.metadata/
+**/.metadata/
+
+# Eclipse project files
 .apt_generated
 **/.classpath
 .factorypath
 **/.project
 **/.settings/
+
+# STS cache
 .springBeans
 .sts4-cache
 
@@ -77,8 +89,19 @@ application-secret.properties
 # OS Files
 # ==========================================
 
+# macOS
 .DS_Store
+._*
+
+# Windows
 Thumbs.db
+
+# ==========================================
+# Temporary Files
+# ==========================================
+
+*~
+*.tmp
 
 # ==========================================
 # Keep Nested Source Build Folders
