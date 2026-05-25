@@ -1,6 +1,5 @@
 package com.mydomain.springweb.onetomanymapping;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,13 +10,19 @@ import com.mydomain.springweb.onetomanymapping.repository.PostRepository;
 
 @SpringBootApplication
 public class SpringbootHibernateOneToManyMappingApplication implements CommandLineRunner {
-
+	
+	// CONSTRUCTOR DI
+	private final PostRepository postRepository;
+	
+	public SpringbootHibernateOneToManyMappingApplication(PostRepository postRepository) {
+		this.postRepository = postRepository;
+	}
+	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringbootHibernateOneToManyMappingApplication.class, args);
 	}
 	
-	@Autowired
-	private PostRepository postRepository;
+	
 	
 	@Override
 	public void run(String... args) throws Exception {
