@@ -234,7 +234,6 @@ DB_PASSWORD=your_password
 
 - spring-boot-starter-data-jpa
 - mariadb-java-client
-- spring-dotenv
 - spring-boot-devtools
 
 ---
