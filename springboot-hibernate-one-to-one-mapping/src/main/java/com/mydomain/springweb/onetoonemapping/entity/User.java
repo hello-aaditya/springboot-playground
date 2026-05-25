@@ -10,6 +10,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.Email;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="user")
@@ -21,9 +24,13 @@ public class User {
 	private Long id;
 	
 	@Column(name="name")
+	@NotBlank
+	@Size(min=2, message="Name must have atleast 2 characters")
 	private String name;
 	
 	@Column(name="email")
+	@Email
+	@NotBlank(message="Email is required.")
 	private String email;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)

@@ -13,6 +13,11 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToOne;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Past;
+import jakarta.validation.constraints.Pattern;
+import jakarta.validation.constraints.Size;
 
 @Entity
 @Table(name="user_profile")
@@ -24,16 +29,27 @@ public class UserProfile {
 	private Long id;
 	
 	@Column(name="phone_number")
+	@NotBlank(message="Phone number is required")
+	@Pattern(
+			regexp="^[0-9]{10}$",
+			message="Phone number must contain exactly 10 digits"
+	)
+	
 	private String phoneNumber;
 	
 	@Column(name="address")
+	@NotBlank(message="Address is required")
+	@Size(min =5, max=150, message="Address must be between 5 and 150 characters")
 	private String address;
 	
 	@Column(name="gender")
 	@Enumerated(EnumType.STRING)
+	@NotNull(message="Gender is required")
 	private Gender gender;
 	
 	@Column(name="dob")
+	@NotNull(message="Date of Birth is required")
+	@Past(message="Date of birth must be in the past")
 	private LocalDate dob;
 	
 	@OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "userProfile")
