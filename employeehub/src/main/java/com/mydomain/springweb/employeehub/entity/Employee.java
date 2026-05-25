@@ -23,7 +23,7 @@ public class Employee {
 	@Column(name="first_name")
 	@NotBlank(message="First Name is required")
 	@Size(min = 2, message="First name must contain atleast 2 character")
-	private String firstname;
+	private String firstName;
 	
 	@Column(name="last_name")
 	private String lastName;
@@ -39,11 +39,11 @@ public class Employee {
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public String getFirstname() {
-		return firstname;
+	public String getFirstName() {
+		return firstName;
 	}
-	public void setFirstname(String firstname) {
-		this.firstname = firstname;
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
 	}
 	public String getLastName() {
 		return lastName;
