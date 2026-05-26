@@ -5,6 +5,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import com.mydomain.springweb.employeehub.entity.Employee;
@@ -48,5 +49,15 @@ public class EmployeeController {
 		
 		employeeService.saveEmployee(employee);
 		return "redirect:/";
+	}
+	
+	// GET EMPLOYEE FROM THE SERVICE
+	@GetMapping("/showFormForUpdate/{id}")
+	public String showFormForUpdate(@PathVariable(value="id") Long id, Model model) {
+		Employee employee = employeeService.getEmployeeById(id);
+		
+		//SET EMPLOYEE AS A MODEL ATTRIBUTE TO PRE-POPULATE THE FORM
+		model.addAttribute("employee", employee);
+		return "update_employee";
 	}
 }
